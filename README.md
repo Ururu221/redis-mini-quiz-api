@@ -1,4 +1,3 @@
-```markdown
 # Redis Quiz API
 
 This is a simple quiz backend built with **.NET 8**, **Redis**, and **Minimal API**.  
@@ -45,7 +44,7 @@ Checks the answer. If correct and not answered before — adds 1 point to the us
 
 ```bash
 dotnet run
-```
+
 
 3. Open Swagger at [http://localhost:5000/swagger](http://localhost:5000/swagger) to test the API.
 
