@@ -10,7 +10,7 @@ It supports adding members, answering questions, and getting real-time updates u
 - Answer questions and gain points
 - Prevent double answers
 - Auto-expiring questions
-- Live updates using Redis channels
+- Live updates via Redis Pub/Sub
 
 ## Technologies
 
@@ -23,34 +23,35 @@ It supports adding members, answering questions, and getting real-time updates u
 ## Endpoints
 
 ### `GET /`  
-Pre-loads some sample questions into Redis.
+Pre-loads sample questions into Redis.
 
 ### `POST /add-member/{name}`  
 Adds a new member to the quiz.
 
 ### `GET /members`  
-Returns the list of all members with their scores.
+Returns all members with their scores.
 
 ### `GET /question/{id}`  
-Returns the text of the question by its ID.
+Returns the question text by its ID.
 
 ### `PATCH /answer/{question}/{name}/{answer}`  
-Checks the answer. If correct and not answered before — adds 1 point to the user.
+Checks the answer.  
+If correct and not answered before — adds 1 point to the user.
 
 ## Run the project
 
-1. Make sure you have Redis running locally (default port: `6379`)
+1. Make sure Redis is running locally (default port: `6379`).
 2. Run the app:
 
 ```bash
 dotnet run
-
+```
 
 3. Open Swagger at [http://localhost:5000/swagger](http://localhost:5000/swagger) to test the API.
 
 ## Example Pub/Sub
 
-The app subscribes to `quiz:updates` channel in Redis and prints messages to the console, for example:
+The app subscribes to the `quiz:updates` channel in Redis and prints messages to the console, for example:
 
 ```
 [Pub/Sub] Fedia gains 1 point for answering question #2.
